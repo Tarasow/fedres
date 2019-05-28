@@ -40,6 +40,6 @@ async def get_search_result(ctx, client):
             break
         ctx.update_for_next_page()
         ids = parser.get_result_ids(json_data)
-        all_ids.append(ids)
+        all_ids.extend(ids)
 
     return all_ids
