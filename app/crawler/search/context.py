@@ -1,8 +1,7 @@
-class SearchContext:
-    def __init__(self, batch_size, query):
-        self.current_index = 0
-        self.batch_size = batch_size
-        self.query = query
+from app.crawler.common.context_base import ContextBase
 
-    def update_for_next_page(self):
-        self.current_index = self.current_index + self.batch_size
+
+class SearchContext(ContextBase):
+    def __init__(self, batch_size, query):
+        super().__init__(batch_size)
+        self.query = query
