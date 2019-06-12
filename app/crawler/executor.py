@@ -24,4 +24,4 @@ def run_task(query_str, batch_size):
     for entity_guid in entities:
         messages.extend(getting_messages(batch_size, entity_guid))
 
-    return json.dumps(messages)
+    return json.dumps(messages, ensure_ascii=False)
