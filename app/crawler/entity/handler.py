@@ -16,10 +16,10 @@ class EntityHandler(HandlerBase):
         }
         return json.dumps(post_data)
 
-    async def get_entity_result(self, ctx, client):
+    def get_entity_result(self, ctx):
         all_messages = []
         while True:
-            response = await self.get_result_page(ctx, client)
+            response = self.get_result_page(ctx)
             json_data = parse_helper.get_result_json(response)
             if parse_helper.is_empty_page_result(json_data):
                 break

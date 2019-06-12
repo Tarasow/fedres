@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+import requests
 
 
 class HandlerBase(ABC):
@@ -19,8 +20,8 @@ class HandlerBase(ABC):
             'Content-Type': 'application/json'
         }
 
-    async def get_result_page(self, ctx, client):
+    def get_result_page(self, ctx):
         post_data = self.create_post_data(ctx)
-        async with client.post(self.request_url, data=post_data, headers=self.get_post_headers()) as resp:
-            assert resp.status == 200
-            return await resp.text()
+        response = requests.post(self.request_url, data=post_data, headers=self.get_post_headers())
+        assert response.status_code == 200
+        return response.text
